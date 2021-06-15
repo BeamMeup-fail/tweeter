@@ -1,0 +1,11 @@
+nav {
+    height: 120px;
+    width: 100vw;
+    background-color: #4056a1;
+    color: #FFFF;
+    align-content: 1.5em;
+    z-index: 100%;
+}
+span{
+    font-family: Bungee;
+}

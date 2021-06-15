@@ -1,0 +1,9 @@
+header{
+    height: 400px;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    background-color: #008c85;
+    background-image: url("https://www.transparenttextures.com/patterns/small-crosses.png");
+
+}
