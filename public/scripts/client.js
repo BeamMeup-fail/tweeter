@@ -81,4 +81,17 @@ function createTweetElement(tweetData) {
         })
 
     }
-  })
+  });
+  function loadTweets () {
+    $.ajax({
+      type: 'GET',
+      url: "/tweets",
+      dataType: 'JSON'
+    })
+    .done( data => {
+      console.log(data);
+        renderTweets(data)
+    })
+  }
+loadTweets();
+});
