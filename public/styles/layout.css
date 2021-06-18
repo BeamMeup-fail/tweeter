@@ -20,12 +20,50 @@ body {
   font-size: 24px;
 }
 
-main{
-  width: 90%;
-  align-content: center;
-  background-color: #f4f1ec;
-}
+
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+ main {
+  width:70%;
+  margin:auto;
+  background-color: white;
+  text-align: center;
+  padding-top:64px;
+ }
+
+ @media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .main-header {
+    position: static;
+  }
+  .upper-header {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .navbar-general {
+    width: 100%;
+    padding: 10px 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .nav-button {
+    margin: 10px 0;
+  }
+  #signedUser {
+    text-align: center;
+  }
+  main {
+    padding-top: 20px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  /* Laptop/Desktop screen sizes */
+}
