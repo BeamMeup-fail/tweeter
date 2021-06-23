@@ -3,67 +3,90 @@
   <head>
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap" rel="stylesheet"> 
+
+    <!-- Custom Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400;1,600&display=swap" rel="stylesheet">
+
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+    <!-- Nav CSS -->
+    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+
+    <!-- Header CSS -->
+    <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+
+    <!-- Tweet CSS -->
+    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+
+    <!-- Feed CSS -->
+    <link rel="stylesheet" href="/styles/feed.css" type="text/css" />
+
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="./images/favicon.ico">
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
-    <script type="text/javascript" scr="/scripts/composer-char-counter.js"></script>
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
+
+    <!-- Counter JS -->
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+
+    <!-- Custom JS -->
+    <script type="text/javascript" src="/scripts/custom.js"></script>
     
+    <!-- autosize JS -->
+    <script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
+    
+    <!-- disable viewport scaling -->
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
   </head>
 
   <body>
     <!-- Top nav bar (fixed) -->
-    <nav id="nav-bar">
-      <img class="logo" src="/images/mandoSkull.png">
-      <span class="header">Fetter</span>
-      <button id="composeTweet" ><i class="fas fa-edit"></i>Compose</button>
-    </nav>
-
-    <nav href="/styles/nav.css" type="text/css">
-      <span>tweeter</span>
-    </nav>
-    <header>
-      <div>
-          <img src="/images/profile-hex.png"> 
+    <nav>
+      <span id="brand">tweeter</span>
+      <div id="nav-form-toggle" class="navClicked">
+        <span><strong>Write</strong> a new tweet</span>
+        <img id="nav-arrow" src="images/icons/down-arrow-solid-24.png">
       </div>
-      <br>
-      <div>
-          <h2>Your Name</h2>
+    </nav>
+    <!-- tweeter-specific content -->
+    <div id="tweeter-container">
+      <!-- user header -->
+      <header id="user-header">
+        <div>
+          <img id="avatar" src="/images/avatars/008-man.png"> 
+        </div>
+        <br>
+        <div>
+          <p><strong>Clinton</strong> Pearce</p>
+        </div>
+      </header>
+      <div id="tweeter-main">
+        <!-- where users tweet -->
+        <section id="new-tweet">
+          <form id="new-tweet-form" method="POST" action="/tweets" type="application/x-www-form-urlencoded">
+            <label id="tweet-text-label" for="tweet-text">What are you humming about?</label>
+            <textarea rows="1" name="text" id="tweet-text"></textarea>
+            <footer id="tweet-footer">
+              <button id="new-tweet-btn" type="submit">Tweet</button>
+              <output name="counter" class="counter" for="tweet-text">140</output>
+            </footer>
+          </form>
+        </section>
+        <!-- will be built dynamically by the tweet database-->
+        <section id="tweet-feed">
+        </section>
       </div>
-  </header>
-  
-
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-      <section class="new-tweet">
-        <h2>Compose Tweet</h2>
-        <form id="incomingTweet" action="/tweets/" method="post">
-          <label for="tweet-text">What are you humming about?</label>
-          <textarea name="text" id="tweet-text" class="textArea"></textarea>
-          <div>
-            <button type="submit">Tweet</button>
-            <output name="counter" class="counter" src="/scripts/composer-char-counter.js" for="tweet-text">140</output>
-          </div>
-        </form>
-        <section class="error">
-          <h5 id="specific-message"></h6>
-      </section>
-      </section>
-      
-      <section id="tweets-container">
-      </section>
-    </main>
+    </div>
+    <!-- our take us back up button - appears after 200px scrolled -->
+    <div id="scroll-up">Top</div>
+    </div>
   </body>
 </html>
