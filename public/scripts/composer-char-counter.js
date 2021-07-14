@@ -1,11 +1,23 @@
-$( document ).ready(function() {
-  // on key-up, update the new tweet counter to length
-  $( "#tweet-text" ).on('keyup', function() {
-    $( ".counter" ).html(`${140 - this.value.length}`);
-    if (140 - this.value.length < 0) {
-      $( ".counter" ).css('color', 'red');
+// when DOM loads
+$(document).ready(() => {
+
+  const $textArea = $('.new-tweet textarea');
+
+  // updates the character counter every time text is inputted
+  $textArea.on('keyup', function() {
+
+    const $charCounter = $(this).siblings('.counter');
+    const remainingCharCount = 140 - $(this).val().length;
+
+    $charCounter.text(remainingCharCount);
+
+    // makes character counter red if over character limit
+    if (remainingCharCount < 0) {
+      $charCounter.addClass('over-char-limit');
+
     } else {
-      $( ".counter" ).css('color', '#545149');
+      $charCounter.removeClass('over-char-limit');
     }
   });
+
 });
