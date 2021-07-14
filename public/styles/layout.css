@@ -1,120 +1,65 @@
 html {
   box-sizing: border-box;
-  scroll-behavior: smooth;
-  overflow: scroll;
 }
-/* stahp chromium/gecko builtin css */
 *, *:before, *:after {
   box-sizing: inherit;
-  margin: 0;
-  padding: 0;
 }
 
 /*
  * Global layout stuff
  */
 
+ * {
+   font-family: Source Sans Pro, sans-serif;
+ }
+
 body {
   color: #545149;
   background-color: #f4f1ec;
-  font-size: 1.5em;
-  font-family: 'Source Sans Pro', sans-serif;
-}
-/* div that wraps the new-tweet field and feed */
-#tweeter-main {
-  width: 90vw;
-  max-width: 550px;
-}
-/* includes the user header, and the new tweet field and feed */
-#tweeter-container {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  min-width: 150px;
-  margin: 0 10vw;
-}
-/* message generated for the user */
-#toast {
-  position: sticky;
-  left: 30%;
-  width: 40%;
-  margin: 0 auto;
-  background-color: white;
-  color: #545149;
-  font-family: 'Source Sans Pro', sans-serif;
-  border: 4px solid #545149;
-  font-weight: 900;
-  text-align: center;
-  padding: 1em;
-  z-index: 5;
-  bottom: 70px;
-}
-/* fail and success are function vars to attribute specific classes */
-#toast.fail {
-  box-shadow: 8px 8px #bd2a2a;
-  border: 4px solid #bd2a2a;
-  color: #bd2a2a;
-}
-/*  as above  */
-#toast.success {
-  box-shadow: 8px 8px #289947;
-  border: 4px solid #289947;
-  color: #289947;
-}
-/* the circle that appears on the page to scroll up */
-#scroll-up {
-  transform: rotate(180deg);
-  align-content: center;
-  justify-content: center;
-  text-align: center;
-  line-height: 1.5em;
-  display: none;
-  left: 95vw;
-  bottom: 10%;
-  font-size: 1em;
-  position: sticky;
-  font-family: 'Bungee', cursive;
-  height: 2em;
-  width: 4em;
-  transform: rotate(270deg);
-  border: .2em solid rgba(84, 81, 73, 1);
-  filter: blur(.9);
-  background-color: rgba(227, 224, 218, .2);
+  font-size: 24px;
 }
 
-#scroll-up:hover {
-  opacity: 1;
-}
+/*
+ * Additional CSS can be defined below or in other CSS files, as per instructions
+ */
 
-@media (max-width: 850px) {
-  #toast {
-    width: 60%;
-    left: 20%;
-    bottom: 15px;
-  }
-  #scroll-up {
-    transform: rotate(0deg);
-    left: 40vw;
-    width: 20vw;
-    bottom: 5px;
-    opacity: .3;
-  }
-}
-@media (min-width: 850px) {
-  #tweeter-container {
-    flex-flow: row;
-    align-items: flex-start;
-    margin-top: 3em;
-  }
-  
-  #user-header {
-    width: 33%;
-    max-width: 15em;
-    margin-right: 5%;
-  }
+ main {
+   margin: auto;
+   width: 90%;
+   position: relative;
+   top: 120px;
+ }
 
-  #user-header h2 {
-    font-size: 1em;
+ 
+ /* 
+  * Responsive layout 
+  * (mobile/tablet layout by default styling)
+  */
+
+  /* For desktops/laptops */
+  @media only screen and (min-width: 1024px) {
+
+    /* Header with avatar image and user name */
+    .profile {
+      width: 28%;
+      margin: 10vh 6% 0;
+      float: left;
+    }
+
+    /* Main content container */
+    main {
+      width: 50%;
+      margin: 10vh 5% 0;
+      float: right;
+    }
+
+    /* Tweet form */
+    .new-tweet form {
+      margin: 0 0 60px;
+    }
+
+    /* A single tweet */
+    .tweet {
+      margin-top: 0;
+    }
   }
-}

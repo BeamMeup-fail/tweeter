@@ -1,94 +1,40 @@
 nav {
-    display: flex;
-    justify-content: space-between;
-    height: 5em;
-    width: 100%;
-    color: white;
-    background-color: #4056A1;
-    align-content: center;
-    align-items: center;
-    padding: 0px 3em;
-  }
-  /* the TWEETER logo */
-  #brand {
-    font-family: 'Bungee', cursive;
-    font-size: 50px;
-  }
-  /* this div wraps the expand-form function */
-  #nav-form-toggle {
-    font-size: .6em;
-    display: flex;
-    flex-flow: column;
-    align-content: center;
-    align-items: center;
-  }
-  /* when the $( '#nav-form-toggle' ) is clicked, scale it up */
-  .navClicked {
-    animation : pulse 2s infinite;
-    transform: scale(1.4);
-  }
-  
-  #nav-form-toggle:hover {
-    animation : pulse 1s infinite;
-  }
-  
-  #nav-form-toggle img {
-    height: 20px;
-    width: 20px;
-    filter: invert(100%);
-    animation: jump 2s infinite;
-  }
-  /* below 850px and above 400px, do */
-  @media (max-width: 850px) {
-    nav {
-      background-color: #429ef5;
-      background-image: url(../images/userBG/asfalt-dark.png);
-    }
-    nav #brand #nav-form-toggle { 
-      position: absolute;
-      height: 3em;
-      top: 3em;
-      font-size: 4vw;
-    }
-    #brand {
-      font-size: 6vw
-    } 
-  }
-  /* below 400px do */
-  @media (max-width: 400px) {
-    nav { 
-      height: 3em;
-      font-size: 3vw;
-    }
-    #brand {
-      font-size: 3vw
-    } 
-  }
-  
-  
-  @keyframes pulse {
-    from {
-        transform : scale(1);
-        opacity   : 1;
-    }
-    50% {
-        transform : scale(1.2);
-        opacity   : 0.45;
-    }
-    to {
-        transform : scale(1);
-        opacity   : 1;
-    }
-  }
-  
-  @keyframes jump {
-    from {
-        transform : translateY(0px);
-    }
-    50% {
-        transform : translateY(10px);
-    }
-    to {
-        transform : translateY(0px);
-    }
-  }
+  position: fixed;
+  top: 0;
+  height: 120px;
+  width: 100vw;
+  z-index: 99;
+  padding: 1.5em;
+  background-color: #4056A1;
+  color: #ffffff;
+}
+
+/* Tweeter text */
+nav span:nth-child(1) {
+  font-family: Bungee, sans-serif;
+  float: left;
+  font-size: 1.5em;
+}
+
+/* Write a new tweet text */
+nav span:nth-child(2) {
+  position: absolute;
+  right: 1.5em;
+  top: 1.5em;
+}
+
+/* Arrow icon */
+nav i {
+  position: absolute;
+  right: 48%;
+  bottom: -1.5em;
+  color: rgba(242, 101, 25, 0.849);
+  transition: all 0.5s ease;
+}
+
+nav i:hover {
+  color: rgb(242, 101, 25);
+  font-size: 1.3em;
+  bottom: -1.3em;
+  transition: all 0.5s ease;
+}

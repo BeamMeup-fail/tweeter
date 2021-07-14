@@ -1,92 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
+  <!-- 
+  *
+  HEAD
+  *
+  -->
   <head>
+
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- External CSS -->
+    <!-- Normalize CSS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
 
-    <!-- Custom Google Fonts-->
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400;1,600&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Bungee|Source+Sans+Pro:300,300i,400,700,700i&display=swap" rel="stylesheet">
+
+    <!-- Font icons -->
+    <script src="https://kit.fontawesome.com/0a7ed7867a.js" crossorigin="anonymous"></script>
 
     <!-- App CSS -->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="styles/nav.css" type="text/css">
+    <link rel="stylesheet" href="styles/header.css" type="text/css">
+    <link rel="stylesheet" href="styles/new-tweet.css" type="text/css">
+    <link rel="stylesheet" href="styles/all-tweets.css" type="text/css">
+    <link rel="stylesheet" href="styles/scroll-up-button.css" type="text/css">
+    <link rel="stylesheet" href="styles/layout.css" type="text/css" />
 
-    <!-- Nav CSS -->
-    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
-
-    <!-- Header CSS -->
-    <link rel="stylesheet" href="/styles/header.css" type="text/css" />
-
-    <!-- Tweet CSS -->
-    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
-
-    <!-- Feed CSS -->
-    <link rel="stylesheet" href="/styles/feed.css" type="text/css" />
-
-    <!-- favicon -->
-    <link rel="icon" type="image/png" href="./images/favicon.ico">
-
-    <!-- External JS -->
+    <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- App JS -->
-    <script type="text/javascript" src="/scripts/client.js"></script>
+    <script type="text/javascript" src="scripts/client.js"></script>
+    <script type="text/javascript" src="scripts/composer-char-counter.js"></script>
+    <script type="text/javascript" src="scripts/composer-scroll-up.js"></script>
 
-    <!-- Counter JS -->
-    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
-
-    <!-- Custom JS -->
-    <script type="text/javascript" src="/scripts/custom.js"></script>
-    
-    <!-- autosize JS -->
-    <script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
-    
-    <!-- disable viewport scaling -->
-    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
   </head>
 
+
+  <!-- 
+  *
+  BODY
+  *
+  -->
   <body>
+
     <!-- Top nav bar (fixed) -->
     <nav>
-      <span id="brand">tweeter</span>
-      <div id="nav-form-toggle" class="navClicked">
-        <span><strong>Write</strong> a new tweet</span>
-        <img id="nav-arrow" src="images/icons/down-arrow-solid-24.png">
-      </div>
+      <span>Tweeter</span>
+      <span>
+        <b>Write</b> a new tweet
+        <a><i class="fas fa-angle-double-down"></i></a>
+      </span>
     </nav>
-    <!-- tweeter-specific content -->
-    <div id="tweeter-container">
-      <!-- user header -->
-      <header id="user-header">
-        <div>
-          <img id="avatar" src="/images/avatars/008-man.png"> 
-        </div>
-        <br>
-        <div>
-          <p><strong>Clinton</strong> Pearce</p>
-        </div>
-      </header>
-      <div id="tweeter-main">
-        <!-- where users tweet -->
-        <section id="new-tweet">
-          <form id="new-tweet-form" method="POST" action="/tweets" type="application/x-www-form-urlencoded">
-            <label id="tweet-text-label" for="tweet-text">What are you humming about?</label>
-            <textarea rows="1" name="text" id="tweet-text"></textarea>
-            <footer id="tweet-footer">
-              <button id="new-tweet-btn" type="submit">Tweet</button>
-              <output name="counter" class="counter" for="tweet-text">140</output>
-            </footer>
-          </form>
-        </section>
-        <!-- will be built dynamically by the tweet database-->
-        <section id="tweet-feed">
-        </section>
+
+    <!-- Header with user avatar and name-->
+    <header class="profile">
+      <div>
+          <img src="images/profile-hex.png"> 
       </div>
-    </div>
-    <!-- our take us back up button - appears after 200px scrolled -->
-    <div id="scroll-up">Top</div>
-    </div>
+      <br>
+      <div>
+          <h2>Cool_guy!</h2>
+      </div>
+    </header>
+
+    <!-- Page-specific (main) content -->
+    <main class="container">
+
+      <!-- Compose tweet section -->
+      <section class="new-tweet">
+        <form method="POST" action="/tweets/">
+          <textarea name="text" placeholder="What are you humming about?"></textarea>
+
+          <!-- Error message, hidden by default -->
+          <h4>
+            <i class="fas fa-exclamation-circle"></i>
+            <span class='tweet-error'>Error message goes here</span>
+          </h4>
+
+          <input type="submit" value="Tweet">
+          <span class="counter">140</span>
+        </form>
+      </section>
+
+      <!-- All tweets timeline section, content is dynamically generated -->
+      <section id="tweets-container"></section>
+
+      <!-- Scroll up button -->
+      <button class='scroll-up'><i class="fas fa-angle-double-up"></i></button>
+
+    </main>
+
   </body>
+
 </html>
